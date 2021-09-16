@@ -19,7 +19,7 @@ const test = async (req, res) => {
 };
 
 const login = (req, res) => {
-  console.log("We are gooood my guy");
+  console.log("We good! ");
 };
 
 module.exports = {

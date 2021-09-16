@@ -8,7 +8,9 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const app = express();
 
-const testRouters = require("./routers/testRouters");
+// IMPORT ROUTES
+const userRouters = require("./routers/userRouters");
+const contactRouters = require("./routers/contactRouters");
 
 mongoose
   .connect(process.env.DB, { useNewUrlParser: true })
@@ -17,7 +19,8 @@ mongoose
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
-app.use("/users", testRouters);
+app.use("/", userRouters);
+app.use("/contact", contactRouters);
 
 app.listen(process.env.PORT, () => {
   console.log("Listening on port : ", process.env.PORT);
