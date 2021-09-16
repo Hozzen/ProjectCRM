@@ -18,9 +18,15 @@ const register = async (req, res) => {
     });
   }
 
+  const { password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 12);
+
   try {
     console.log("register is working");
-    let user = await User.create(req.body);
+    let user = await User.create({
+      email: req.body.email,
+      password: hashedPassword,
+    });
     res.json({
       status: "OK",
       data: user,
